@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from crewai import Agent, Task, Crew
+#from crewai import Agent, Task, Crew
+from crewai import Agent, Task, Crew, Process, LLM
 from groq import Groq
 
 # Set up Groq API
