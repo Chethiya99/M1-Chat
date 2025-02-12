@@ -67,7 +67,7 @@ if uploaded_file is not None:
 
             # Define tasks for the agents
             extract_task = Task(
-                description=f"Extract data from the CSV based on the query: {user_query}",
+                description=f"Extract data from the CSV looks as {df_head} based on the query: {user_query}",
                 agent=data_extractor_agent,
                 expected_output="A subset of the CSV data relevant to the user's query."
             )
