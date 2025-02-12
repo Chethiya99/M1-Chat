@@ -20,7 +20,7 @@ from crewai import Agent, Task, Crew, Process, LLM
 
 # Set up Groq API
 GROQ_API_KEY = "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"
-client = Groq(api_key=GROQ_API_KEY)
+
 
 llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 
@@ -53,8 +53,7 @@ if uploaded_file is not None:
                 goal=f"Extract relevant data from the CSV based on the user query: {user_query}",
                 backstory="You are an expert at extracting specific data from datasets based on user queries.",
                 Provider = 'Groq',
-                llm = llm,
-                verbose=True
+                llm = llm
             )
 
             data_analyst_agent = Agent(
@@ -62,8 +61,7 @@ if uploaded_file is not None:
                 goal="Analyze the extracted data and provide meaningful insights.",
                 backstory="You are a data analyst with expertise in deriving insights from structured data.",
                 Provider = 'Groq',
-                llm = llm,
-                verbose=True
+                llm = llm
             )
 
             # Define tasks for the agents
