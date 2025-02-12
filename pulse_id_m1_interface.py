@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
-#from crewai import Agent, Task, Crew
-from crewai import Agent, Task, Crew, Process, LLM
+from crewai import Agent, Task, Crew
 from groq import Groq
 
 # Set up Groq API
@@ -9,6 +8,14 @@ GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
 
 # Streamlit app
+st.set_page_config(
+    page_title="📊 CSV Data Analysis with CrewAI and Groq",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Title and description
 st.title("📊 CSV Data Analysis with CrewAI and Groq")
 st.markdown("Upload a CSV file, enter your query, and get insights!")
 
@@ -28,7 +35,6 @@ if uploaded_file is not None:
                 role="Data Extractor",
                 goal=f"Extract relevant data from the CSV based on the user query: {user_query}",
                 backstory="You are an expert at extracting specific data from datasets based on user queries.",
-                tools=[],  # No tools needed for this example
                 verbose=True
             )
 
@@ -36,7 +42,6 @@ if uploaded_file is not None:
                 role="Data Analyst",
                 goal="Analyze the extracted data and provide meaningful insights.",
                 backstory="You are a data analyst with expertise in deriving insights from structured data.",
-                tools=[],  # No tools needed for this example
                 verbose=True
             )
 
@@ -69,3 +74,5 @@ if uploaded_file is not None:
 
             st.subheader("Analysis and Insights:")
             st.write(result["analyze_task_output"])  # Output from the Data Analyst Agent
+        else:
+            st.warning("⚠️ Please enter a query before clicking 'Run Query'.")
