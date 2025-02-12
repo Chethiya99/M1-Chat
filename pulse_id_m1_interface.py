@@ -16,7 +16,7 @@ from langchain_community.agent_toolkits import create_sql_agent
 from langchain_groq import ChatGroq
 from langchain.agents import AgentType
 from langchain_community.llms import Ollama
-from crewai import Agent, Task, Crew, Process, LLM
+from crewai import Agent, Task, Crew
 # Set up Groq API
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
