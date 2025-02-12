@@ -6,7 +6,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
-
+from groq import Groq
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import re
 import pandas as pd
