@@ -89,7 +89,7 @@ if uploaded_file is not None:
 
             # Display the results
             st.subheader("Extracted Data:")
-            st.write(result["extract_task_output"])  # Output from the Data Extractor Agent
+            st.write(result)  # Output from the Data Extractor Agent
 
             st.subheader("Analysis and Insights:")
             st.write(result["analyze_task_output"])  # Output from the Data Analyst Agent
