@@ -81,7 +81,7 @@ if uploaded_file is not None:
             crew = Crew(
                 agents=[data_extractor_agent, data_analyst_agent],
                 tasks=[extract_task, analyze_task],
-                verbose=2
+                process=Process.sequential
             )
 
             # Execute the crew
