@@ -1,8 +1,22 @@
-import streamlit as st
-import pandas as pd
-from crewai import Agent, Task, Crew
-from groq import Groq
+__import__('pysqlite3')
+import sys
+import os
+import sqlite3
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from datetime import datetime
 
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+import re
+import pandas as pd
+import streamlit as st
+from langchain_community.utilities import SQLDatabase
+from langchain_community.agent_toolkits import create_sql_agent
+from langchain_groq import ChatGroq
+from langchain.agents import AgentType
+from langchain_community.llms import Ollama
+from crewai import Agent, Task, Crew, Process, LLM
 # Set up Groq API
 GROQ_API_KEY = "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"
 client = Groq(api_key=GROQ_API_KEY)
