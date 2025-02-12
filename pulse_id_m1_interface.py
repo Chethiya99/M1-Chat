@@ -42,6 +42,7 @@ if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
     st.subheader("Preview of the uploaded CSV file:")
     st.write(df.head())
+    df_head = df.head()
 
     # User query input
     user_query = st.text_input("Enter your query (e.g., 'Show sales data for 2023'):")
@@ -50,7 +51,7 @@ if uploaded_file is not None:
             # Define the CrewAI agents
             data_extractor_agent = Agent(
                 role="Data Extractor",
-                goal=f"Extract relevant data from the CSV based on the user query: {user_query}",
+                goal=f"Extract relevant data from the CSV wich looks like {df_head} based on the user query: {user_query}",
                 backstory="You are an expert at extracting specific data from datasets based on user queries.",
                 Provider = 'Groq',
                 llm = llm
