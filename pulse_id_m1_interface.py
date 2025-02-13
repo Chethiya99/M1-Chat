@@ -128,17 +128,17 @@ def render_query_section():
                     # Process raw output using an extraction agent 
                     extractor_llm = LLM(model="groq/llama-3.3-70b-versatile", api_key=st.session_state.api_key)
                     extractor_agent = Agent(
-                        role="Data Extractor",
-                        goal="Extract merchants, emails, reviews and anything possible from the raw output if they are only available.",
-                        backstory="You are an expert in extracting structured information from text.",
+                        role="Data Analyst",
+                        goal="Extract valueble insights from the data given for you",
+                        backstory="You are an expert in extracting valueble insights/information from text.",
                         provider="Groq",
                         llm=extractor_llm 
                     )
                     
                     extract_task = Task(
-                        description=f"Extract a list of 'merchants' and their 'emails', 'reviews' from the following text:\n\n{st.session_state.raw_output}",
+                        description=f"Extract valueble insights from the following text:\n\n{st.session_state.raw_output}",
                         agent=extractor_agent,
-                        expected_output="if available, Please return A structured list of merchant names, their associated email addresses, reviews etc extracted from the given text"
+                        expected_output="Please give the valueble insights you extracted, in a point wise way"
                     )
                     
                     # Crew execution for extraction 
